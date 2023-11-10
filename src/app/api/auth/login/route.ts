@@ -11,12 +11,12 @@ export async function POST(request: Request) {
 
     await connectDB();
     const user = await User.findOne({ email: body.email });
-    // console.log("reached here1")
+    console.log("reached here1")
     if (!user) {
         return Response.json('not registered ', { status: 404 })
-        // console.log("reached here2")
+        console.log("reached here2")
     }
-    // console.log("reached here3")
+    console.log("reached here3")
     const passwordValid = bcrypt.compareSync(body.password, (user.password).toString());
 
     if (!passwordValid) {
