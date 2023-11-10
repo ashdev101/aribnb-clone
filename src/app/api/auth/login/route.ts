@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     const passwordValid = bcrypt.compareSync(body.password, (user.password).toString());
 
     if (!passwordValid) {
-        return Response.json('Invalid password', { status: 401 })
+        return Response.json('Invalid password', { status: 403 })
     }
 
     const userWithoutPassword = { ...user.toObject() };
