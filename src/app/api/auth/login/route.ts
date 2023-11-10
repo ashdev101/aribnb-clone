@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt'
 
 export async function POST(request: Request) {
     const body = await request.json()
+    console.log(body)
     if (!body?.email || !body?.password) {
         return Response.json("Invalid credentails", { status: 401 })
         // console.log("reached here")
