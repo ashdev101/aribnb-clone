@@ -16,7 +16,7 @@ export const authOption: AuthOptions = ({
                 try{
                     // console.log(credentials)
                 // console.log('started ')
-                const authResponse = await axios.post("http://localhost:3000/api/auth/login", credentials)
+                const authResponse = await axios.post("https://aerbenb-clone.vercel.app/api/auth/login", credentials)
                 
 
                 if (authResponse.status != 200) {

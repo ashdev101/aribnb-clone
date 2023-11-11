@@ -51,8 +51,8 @@ function UserLoginModal({ }: Props) {
       router.refresh()
 
     },
-    onError : ()=>{
-      toast.error("invalid credentails ")
+    onError : (error)=>{
+      toast.error(`${error}`)
     }
   })
 
