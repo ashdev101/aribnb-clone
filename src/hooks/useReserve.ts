@@ -38,7 +38,7 @@ function useReservation(
   const allreservationsOfListing = useQuery({
     queryKey: ['allreservationsOfListing'],
     queryFn: async () => {
-      const res = (await axios(`http://localhost:3000/api/reservation?list_id=${listing._id}`))
+      const res = (await axios(`${process.env.NEXT_PUBLIC_URL}/reservation?list_id=${listing._id}`))
       // console.log(res)
       return res.data
     },
@@ -47,7 +47,7 @@ function useReservation(
 
   const makeReservationMutation = useMutation({
     mutationFn: async () => {
-      return await axios.post('http://localhost:3000/api/reservation', body)
+      return await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/reservation`, body)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['allreservationsOfListing'] })

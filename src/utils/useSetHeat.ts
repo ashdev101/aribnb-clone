@@ -19,7 +19,7 @@ function useSetHeart(currentUserId: string | null, listings: FormProp) {
 
   const addHeartMutation = useMutation({
     mutationFn: async () => {
-      return await axios.post('http://localhost:3000/api/heart', { id: listings._id });
+      return await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/heart`, { id: listings._id });
     },
     onSuccess: () => {
       setIsHearted(true)
@@ -31,7 +31,7 @@ function useSetHeart(currentUserId: string | null, listings: FormProp) {
 
   const removeHeartMutation = useMutation({
     mutationFn: async () => {
-      return await axios.put('http://localhost:3000/api/heart', { id: listings._id })
+      return await axios.put(`${process.env.NEXT_PUBLIC_URL}/api/heart`, { id: listings._id })
     },
     onSuccess: () => {
       setIsHearted(false)
