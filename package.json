@@ -23,6 +23,7 @@
     "date-fns": "^2.30.0",
     "framer-motion": "^10.16.4",
     "graphql": "^16.8.1",
+    "graphql-request": "^7.1.0",
     "graphql-tag": "^2.12.6",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",

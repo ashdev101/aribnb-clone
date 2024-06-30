@@ -9,6 +9,7 @@ import Avatar from '@/components/Avatar/Avatar'
 import Map from './Map'
 import Calender from './Calender'
 import getCurrentUser from '@/utils/getCurrentUser'
+import { getListingById } from '@/graphql/query/listings'
 
 
 export type User = {
@@ -27,13 +28,13 @@ type Props = {
 
 }
 
-const getListingById = async (id: string) => {
-  connectDB()
-  const objectId = new ObjectId(id)
-  const data = await listing.findById(objectId)
-  // console.log(data)
-  return data
-}
+// const getListingById = async (id: string) => {
+//   connectDB()
+//   const objectId = new ObjectId(id)
+//   const data = await listing.findById(objectId)
+//   // console.log(data)
+//   return data
+// }
 
 
 
@@ -48,7 +49,7 @@ export const getUserById = async (id: string | undefined): Promise<User | null> 
 async function page({ params }: { params: Props }) {
   // console.log(params.id)
   const listings: FormProp = await getListingById(params.id)
-  // console.log(listings)
+  console.info("listings", listings)
   const user: User | null = await getCurrentUser()
 
   //how the hell is lister who listed the property
@@ -102,11 +103,13 @@ async function page({ params }: { params: Props }) {
         </div>
       </main>
 
-      <div className=' w-full md:w-[50%] min-h-max rounded-sm '>
-        <Map
-          latlong={listings.locationValue?.latlong}
-        />
-      </div>
+      {/* <div className=' w-full md:w-[50%] min-h-max rounded-sm '>
+        {listings?.locationValue?.latlong[0] &&
+          listings?.locationValue?.latlong[1]
+          && <Map
+            latlong={listings.locationValue?.latlong}
+          />}
+      </div> */}
 
     </>
   )
